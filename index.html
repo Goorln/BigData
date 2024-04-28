@@ -1,0 +1,256 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/echarts.min.js"></script>
+    <script type="text/javascript" src="js/js.js"></script>
+    <script type="text/javascript" src="js/jquery.limarquee.js"></script>
+    <script type="text/javascript" src="js/jquery.cxselect.min.js"></script>
+
+    <link rel="stylesheet" href="css/comon0.css" />
+  </head>
+  <body>
+    <div
+      style="height: 100vh; background: #000d4a url(images/bg.jpg) center top"
+    >
+      <div class="loading">
+        <div class="loadbox">
+          <img src="picture/loading.gif" /> 页面加载中...
+        </div>
+      </div>
+      <div class="back"></div>
+      <div class="head">
+        <div class="weather"><span id="showTime"></span></div>
+        <h1>
+          <a href="#" style="color: white">某某中心财经管理数据可视化平台</a>
+        </h1>
+      </div>
+      <script>
+        var t = null;
+        t = setTimeout(time, 1000); //開始运行
+        function time() {
+          clearTimeout(t); //清除定时器
+          dt = new Date();
+          var y = dt.getFullYear();
+          var mt = dt.getMonth() + 1;
+          var day = dt.getDate();
+          var h = dt.getHours(); //获取时
+          var m = dt.getMinutes(); //获取分
+          var s = dt.getSeconds(); //获取秒
+          document.getElementById("showTime").innerHTML =
+            y + "年" + mt + "月" + day + "日" + h + "时" + m + "分" + s + "秒";
+          t = setTimeout(time, 1000); //设定定时器，循环运行
+        }
+      </script>
+      <div class="mainbox">
+        <ul class="clearfix">
+          <li>
+            <div class="boxall" style="height: 32vh">
+              <div class="alltitle">部门执行率</div>
+              <div class="navboxall" id="echart5"></div>
+            </div>
+            <div class="boxall" style="height: 26vh">
+              <div class="alltitle">执行中</div>
+              <div class="navboxall">
+                <div class="wraptit">
+                  <span>事项名称</span><span>金额/万</span><span>经办人</span>
+                  <!-- <span>时间</span> -->
+                </div>
+                <div class="wrap">
+                  <ul>
+                    <!--  -->
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="boxall" style="height: 26vh">
+              <div class="alltitle">部门占比</div>
+
+              <div class="navboxall" id="echart1"></div>
+            </div>
+          </li>
+          <li>
+            <div class="boxall" style="height: 20vh">
+              <div class="clearfix navboxall" style="height: 100%">
+                <div class="pulll_left num">
+                  <div class="numbt">年度总预算<span>(/万元)</span></div>
+                  <div class="numtxt">2024.89 万</div>
+                </div>
+                <div class="pulll_right zhibiao">
+                  <div class="zb1">
+                    <span>预算执行率</span>
+                    <div id="zb1"></div>
+                  </div>
+                  <div class="zb2">
+                    <span>实际执行率</span>
+                    <div id="zb2"></div>
+                  </div>
+                  <div class="zb3">
+                    <span>账面开支率</span>
+                    <div id="zb3"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="boxall" style="height: 32vh">
+              <div class="alltitle">执行统计</div>
+              <div class="navboxall" id="echart4"></div>
+            </div>
+            <div class="boxall" style="height: 32vh">
+              <div class="alltitle">开支统计</div>
+              <div class="navboxall" id="echart3"></div>
+            </div>
+          </li>
+          <li>
+            <div class="boxall" style="height: 26vh">
+              <div class="alltitle">待审批</div>
+              <div class="navboxall">
+                <table
+                  class="table1"
+                  width="100%"
+                  border="0"
+                  cellspacing="0"
+                  cellpadding="0"
+                >
+                  <tbody>
+                    <tr>
+                      <th scope="col"></th>
+                      <th scope="col">部门</th>
+                      <th scope="col">金额</th>
+                      <th scope="col">事项</th>
+                    </tr>
+                    <tr>
+                      <td><span>1</span></td>
+                      <td>研发部</td>
+                      <td>114.36万<br /></td>
+                      <td>5项<br /></td>
+                    </tr>
+                    <tr>
+                      <td><span>2</span></td>
+                      <td>商务部</td>
+                      <td>92.3万</td>
+                      <td>5项</td>
+                    </tr>
+
+                    <tr>
+                      <td><span>3</span></td>
+                      <td>中心</td>
+                      <td>12.36万</td>
+                      <td>5项</td>
+                    </tr>
+                    <tr>
+                      <td><span>4</span></td>
+                      <td>财务部</td>
+                      <td>15.69万</td>
+                      <td>5项</td>
+                    </tr>
+                    <tr>
+                      <td><span>5</span></td>
+                      <td>教研室</td>
+                      <td>123万</td>
+                      <td>5项</td>
+                    </tr>
+                    <tr>
+                      <td><span>6</span></td>
+                      <td>新闻部</td>
+                      <td>13.4万</td>
+                      <td>5项</td>
+                    </tr>
+                    <tr>
+                      <td><span>7</span></td>
+                      <td>文化部</td>
+                      <td>19.3万</td>
+                      <td>5项</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <div class="boxall" style="height: 26vh">
+              <div class="alltitle">已执行</div>
+              <div class="navboxall">
+                <table
+                  class="table1"
+                  width="100%"
+                  border="0"
+                  cellspacing="0"
+                  cellpadding="0"
+                >
+                  <tbody>
+                    <tr>
+                      <th scope="col"></th>
+                      <th scope="col">部门</th>
+                      <th scope="col">金额</th>
+                      <th scope="col">事项</th>
+                    </tr>
+                    <tr>
+                      <td><span>1</span></td>
+                      <td>研发部</td>
+                      <td>114.36万<br /></td>
+                      <td>5项<br /></td>
+                    </tr>
+                    <tr>
+                      <td><span>2</span></td>
+                      <td>商务部</td>
+                      <td>92.3万</td>
+                      <td>5项</td>
+                    </tr>
+
+                    <tr>
+                      <td><span>3</span></td>
+                      <td>中心</td>
+                      <td>12.36万</td>
+                      <td>5项</td>
+                    </tr>
+                    <tr>
+                      <td><span>4</span></td>
+                      <td>财务部</td>
+                      <td>15.69万</td>
+                      <td>5项</td>
+                    </tr>
+                    <tr>
+                      <td><span>5</span></td>
+                      <td>教研室</td>
+                      <td>123万</td>
+                      <td>5项</td>
+                    </tr>
+                    <tr>
+                      <td><span>6</span></td>
+                      <td>新闻部</td>
+                      <td>13.4万</td>
+                      <td>5项</td>
+                    </tr>
+                    <tr>
+                      <td><span>7</span></td>
+                      <td>文化部</td>
+                      <td>19.3万</td>
+                      <td>5项</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <div class="boxall" style="height: 32vh">
+              <div class="alltitle">预算占比</div>
+              <div class="navboxall" id="echart2"></div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <script>
+      $(function () {
+        $(".wrap,.adduser").liMarquee({
+          direction: "up", //身上滚动
+          runshort: false, //内容不足时不滚动
+          scrollamount: 20, //速度
+        });
+      });
+    </script>
+  </body>
+</html>

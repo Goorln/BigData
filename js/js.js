@@ -1,6 +1,7 @@
 ﻿/*   */
 $(window).load(function () {
-  $(".loading").fadeOut();
+  // $(".loading").fadeOut();
+  $(".loading").fadeIn();
   func();
 });
 var testData;
@@ -34,6 +35,7 @@ function func() {
         .join("");
 
       document.querySelector(".wrap ul").innerHTML = items;
+      $(".loading").fadeOut();
     },
     error: function (err) {
       console.error("请求出错:", err);
